@@ -3,7 +3,7 @@ import React, { Component } from "react";
 export default class Message extends Component {
   render() {
     return (
-      <article className="message is-info">
+      <article className={`message ${this.props.styleName}`}>
         <div className="message-header">
           <p>Info</p>
           <button

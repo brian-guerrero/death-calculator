@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.scss";
 import moment from "moment";
-import Message from "./Message";
+import InfoMessage from "./InfoMessage";
 
 class App extends Component {
   constructor(props) {
@@ -99,7 +99,7 @@ class App extends Component {
         </nav>
         <section className="section container">
           {this.state.message !== "" && (
-            <Message
+            <InfoMessage
               message={this.state.message}
               closeHandler={this.closeMessage}
             />
