@@ -6,6 +6,9 @@ export default class Form extends Component {
         super(state);
         this.submitForm = this.submitForm.bind(this);
         this.inputChange = this.inputChange.bind(this);
+        this.yearsChange = this.yearsChange.bind(this);
+        this.monthsChange = this.monthsChange.bind(this);
+        this.daysChange = this.daysChange.bind(this);
         this.state = {
             birth: "",
             death: "",
@@ -17,19 +20,43 @@ export default class Form extends Component {
         }
     }
 
-    inputChange(name, e) {
-        if (name == null) {
-            const name = e.target.name;
-            this.setState({
-                [name]: e.target.value
-            })
-        } else {
-            this.setState({
-                [name]: e.target.value
-            })
-        }
+    inputChange(e) {
+        const name = e.target.name;
+        this.setState({
+            [name]: e.target.value
+        })
     }
 
+    yearsChange(e) {
+        this.setState({
+            lived: {
+                years: e.target.value,
+                months: this.state.lived.months,
+                days: this.state.lived.days,
+            }
+        })
+    }
+
+    monthsChange(e) {
+        this.setState({
+            lived: {
+                years: this.state.lived.years,
+                months: e.target.value,
+                days: this.state.lived.days
+            }
+        })
+    }
+
+
+    daysChange(e) {
+        this.setState({
+            lived: {
+                years: this.state.lived.years,
+                months: this.state.lived.months,
+                days: e.target.value
+            }
+        })
+    }
 
     submitForm(e) {
         e.preventDefault();
@@ -46,7 +73,7 @@ export default class Form extends Component {
             message = calculateDeathDate(this.state.birth, this.state.lived);
         } else if (
             (this.state.death !== "") &
-            (this.state.lived.years !== null) &
+            (this.state.lived.years !== "") &
             (this.state.lived.months !== "") &
             (this.state.lived.days !== "")
         ) {
@@ -110,7 +137,7 @@ export default class Form extends Component {
                                 name="yearsLived"
                                 id="yearsLived"
                                 value={this.state.lived.years}
-                                onChange={this.inputChange("lived.years")}
+                                onChange={this.yearsChange}
                                 className="input"
                                 min="0"
                             />
@@ -124,7 +151,7 @@ export default class Form extends Component {
                                 name="monthsLived"
                                 id="monthsLived"
                                 value={this.state.lived.months}
-                                onChange={this.inputChange("lived.months")}
+                                onChange={this.monthsChange}
                                 className="input"
                                 min="0"
                                 max="12"
@@ -139,7 +166,7 @@ export default class Form extends Component {
                                 name="daysLived"
                                 id="daysLived"
                                 value={this.state.lived.days}
-                                onChange={this.inputChange("lived.days")}
+                                onChange={this.daysChange}
                                 className="input"
                                 min="0"
                                 max="31"

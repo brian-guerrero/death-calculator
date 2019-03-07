@@ -15,9 +15,9 @@ export const calculateTimeLived = (birthDate, deathDate) => {
 
 export const calculateDeathDate = (birthDate, timeLived) => {
     const death = moment(birthDate)
-        .add(this.state.timeLived.years, "years")
-        .add(this.state.timeLived.months, "months")
-        .add(this.state.timeLived.days, "days")
+        .add(timeLived.years, "years")
+        .add(timeLived.months, "months")
+        .add(timeLived.days, "days")
         .format("dddd, MMMM Do YYYY");
     return `Died on ${death}.`;
 }
@@ -25,9 +25,9 @@ export const calculateDeathDate = (birthDate, timeLived) => {
 export const calculateBirthDate = (deathDate, timeLived) => {
     const death = moment(deathDate);
     const birth = death
-        .subtract(this.state.timeLived.years, "years")
-        .subtract(this.state.timeLived.months, "months")
-        .subtract(this.state.timeLived.days, "days")
+        .subtract(timeLived.years, "years")
+        .subtract(timeLived.months, "months")
+        .subtract(timeLived.days, "days")
         .format("dddd, MMMM Do YYYY");
     return `Born on ${birth}.`;
 }
