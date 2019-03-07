@@ -30,8 +30,12 @@ class App extends Component {
       const death = moment(this.state.death);
       const birth = moment(this.state.birth);
       const yearsLived = death.diff(birth, "years");
-      const monthsLived = death.diff(birth, "months");
-      const daysLived = death.diff(birth, "days");
+      const monthsLived = death
+        .subtract(yearsLived, "years")
+        .diff(birth, "months");
+      const daysLived = death
+        .subtract(monthsLived, "months")
+        .diff(birth, "days");
       console.log(
         `Lived for ${yearsLived} years, ${monthsLived} months, and ${daysLived} days.`
       );
