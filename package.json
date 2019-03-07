@@ -29,5 +29,6 @@
     "includePaths": [
       "./node_modules"
     ]
-  }
+  },
+  "homepage": "http://brianguerrero.me/death-calculator"
 }
