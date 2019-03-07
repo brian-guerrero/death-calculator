@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./App.scss";
 import moment from "moment";
+import Message from "./Message";
 
 class App extends Component {
   constructor(props) {
@@ -10,10 +11,12 @@ class App extends Component {
       death: "",
       yearsLived: "",
       monthsLived: "",
-      daysLived: ""
+      daysLived: "",
+      message: ""
     };
     this.submitForm = this.submitForm.bind(this);
     this.inputChange = this.inputChange.bind(this);
+    this.closeMessage = this.closeMessage.bind(this);
   }
 
   inputChange(e) {
@@ -25,6 +28,7 @@ class App extends Component {
 
   submitForm(e) {
     e.preventDefault();
+    let message;
     console.log(this.state);
     if ((this.state.birth !== "") & (this.state.death !== "")) {
       const death = moment(this.state.death);
@@ -36,9 +40,7 @@ class App extends Component {
       const daysLived = death
         .subtract(monthsLived, "months")
         .diff(birth, "days");
-      console.log(
-        `Lived for ${yearsLived} years, ${monthsLived} months, and ${daysLived} days.`
-      );
+      message = `Lived for ${yearsLived} years, ${monthsLived} months, and ${daysLived} days.`;
     } else if (
       (this.state.birth !== "") &
       (this.state.yearsLived !== "") &
@@ -51,7 +53,7 @@ class App extends Component {
         .add(this.state.monthsLived, "months")
         .add(this.state.daysLived, "days")
         .format("dddd, MMMM Do YYYY");
-      console.log(`Died on ${death}.`);
+      message = `Died on ${death}.`;
     } else if (
       (this.state.death !== "") &
       (this.state.yearsLived !== null) &
@@ -64,15 +66,21 @@ class App extends Component {
         .subtract(this.state.monthsLived, "months")
         .subtract(this.state.daysLived, "days")
         .format("dddd, MMMM Do YYYY");
-      console.log(`Born on ${birth}.`);
+      message = `Born on ${birth}.`;
     }
     this.setState({
       birth: "",
       death: "",
       yearsLived: "",
       monthsLived: "",
-      daysLived: ""
+      daysLived: "",
+      message: message
     });
+  }
+
+  closeMessage(e) {
+    e.preventDefault();
+    this.setState({ message: "" });
   }
 
   render() {
@@ -89,8 +97,14 @@ class App extends Component {
             </div>
           </div>
         </nav>
-        <section className="section">
-          <form onSubmit={this.submitForm} className="container">
+        <section className="section container">
+          {this.state.message !== "" && (
+            <Message
+              message={this.state.message}
+              closeHandler={this.closeMessage}
+            />
+          )}
+          <form onSubmit={this.submitForm}>
             <div className="field">
               <label htmlFor="birth" className="label is-medium">
                 Born:
