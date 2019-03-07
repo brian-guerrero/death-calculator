@@ -106,32 +106,36 @@ class App extends Component {
           )}
           <form onSubmit={this.submitForm}>
             <div className="field">
-              <label htmlFor="birth" className="label is-medium">
-                Born:
-              </label>
-              <input
-                type="date"
-                name="birth"
-                id="birth"
-                max={this.state.death}
-                value={this.state.birth}
-                onChange={this.inputChange}
-                className="input"
-              />
-            </div>
-            <div className="field">
-              <label htmlFor="died" className="label is-medium">
-                Died:
-              </label>
-              <input
-                type="date"
-                name="death"
-                id="death"
-                min={this.state.birth}
-                value={this.state.death}
-                onChange={this.inputChange}
-                className="input"
-              />
+              <div className="field-body">
+                <div className="field">
+                  <label htmlFor="birth" className="label is-medium">
+                    Born:
+                  </label>
+                  <input
+                    type="date"
+                    name="birth"
+                    id="birth"
+                    max={this.state.death}
+                    value={this.state.birth}
+                    onChange={this.inputChange}
+                    className="input"
+                  />
+                </div>
+                <div className="field">
+                  <label htmlFor="died" className="label is-medium">
+                    Died:
+                  </label>
+                  <input
+                    type="date"
+                    name="death"
+                    id="death"
+                    min={this.state.birth}
+                    value={this.state.death}
+                    onChange={this.inputChange}
+                    className="input"
+                  />
+                </div>
+              </div>
             </div>
             <div className="field">
               <div className="field-body">
