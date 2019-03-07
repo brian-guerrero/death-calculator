@@ -49,7 +49,8 @@ class App extends Component {
       const death = birth
         .add(this.state.yearsLived, "years")
         .add(this.state.monthsLived, "months")
-        .add(this.state.daysLived, "days");
+        .add(this.state.daysLived, "days")
+        .format("dddd, MMMM Do YYYY");
       console.log(`Died on ${death}.`);
     } else if (
       (this.state.death !== "") &
@@ -61,7 +62,8 @@ class App extends Component {
       const birth = death
         .subtract(this.state.yearsLived, "years")
         .subtract(this.state.monthsLived, "months")
-        .subtract(this.state.daysLived, "days");
+        .subtract(this.state.daysLived, "days")
+        .format("dddd, MMMM Do YYYY");
       console.log(`Born on ${birth}.`);
     }
     this.setState({
