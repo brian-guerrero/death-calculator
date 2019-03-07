@@ -99,6 +99,7 @@ class App extends Component {
                 type="date"
                 name="birth"
                 id="birth"
+                max={this.state.death}
                 value={this.state.birth}
                 onChange={this.inputChange}
                 className="input"
@@ -112,6 +113,7 @@ class App extends Component {
                 type="date"
                 name="death"
                 id="death"
+                min={this.state.birth}
                 value={this.state.death}
                 onChange={this.inputChange}
                 className="input"
