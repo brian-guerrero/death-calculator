@@ -44,11 +44,29 @@ export default class Form extends Component {
   submitForm(e) {
     e.preventDefault();
     let message;
-    if ((this.props.born === true) & (this.props.died === true)) {
+    if (
+      (this.props.born === true) &
+      (this.props.died === true) &
+      (this.state.born !== "" && this.state.death !== "")
+    ) {
       message = calculateTimeLived(this.state.birth, this.state.death);
-    } else if ((this.props.born === true) & (this.props.time === true)) {
+    } else if (
+      (this.props.born === true) &
+      (this.props.time === true) &
+      (this.state.born !== "" &&
+        !isNaN(this.state.lived.years) &&
+        !isNaN(this.state.lived.months) &&
+        !isNaN(this.state.lived.days))
+    ) {
       message = calculateDeathDate(this.state.birth, this.state.lived);
-    } else if ((this.props.died === true) & (this.props.time === true)) {
+    } else if (
+      (this.props.died === true) &
+      (this.props.time === true) &
+      (this.state.death !== "" &&
+        !isNaN(this.state.lived.years) &&
+        !isNaN(this.state.lived.months) &&
+        !isNaN(this.state.lived.days))
+    ) {
       message = calculateBirthDate(this.state.death, this.state.lived);
     }
     if (message) {
