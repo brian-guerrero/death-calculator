@@ -54,18 +54,18 @@ export default class Form extends Component {
       (this.props.born === true) &
       (this.props.time === true) &
       (this.state.born !== "" &&
-        !isNaN(this.state.lived.years) &&
-        !isNaN(this.state.lived.months) &&
-        !isNaN(this.state.lived.days))
+        this.state.lived.years !== "" &&
+        this.state.lived.months !== "" &&
+        this.state.lived.days !== "")
     ) {
       message = calculateDeathDate(this.state.birth, this.state.lived);
     } else if (
       (this.props.died === true) &
       (this.props.time === true) &
       (this.state.death !== "" &&
-        !isNaN(this.state.lived.years) &&
-        !isNaN(this.state.lived.months) &&
-        !isNaN(this.state.lived.days))
+        this.state.lived.years !== "" &&
+        this.state.lived.months !== "" &&
+        this.state.lived.days !== "")
     ) {
       message = calculateBirthDate(this.state.death, this.state.lived);
     }
