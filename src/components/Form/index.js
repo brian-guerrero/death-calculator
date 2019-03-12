@@ -44,7 +44,6 @@ export default class Form extends Component {
   submitForm(e) {
     e.preventDefault();
     let message;
-    console.log(this.state.lived);
     if ((this.props.born === true) & (this.props.died === true)) {
       message = calculateTimeLived(this.state.birth, this.state.death);
     } else if ((this.props.born === true) & (this.props.time === true)) {

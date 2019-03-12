@@ -42,7 +42,6 @@ class App extends Component {
 
   updateView(components) {
     this.setState({ components });
-    console.log(this.state);
   }
 
   formSubmit(e) {
