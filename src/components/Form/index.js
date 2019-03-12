@@ -81,7 +81,7 @@ export default class Form extends Component {
       });
       this.props.submitHandler(message);
     } else {
-      this.props.errorHandler(`Please enter values.`);
+      this.props.errorHandler(`Please enter valid values.`);
     }
   }
 

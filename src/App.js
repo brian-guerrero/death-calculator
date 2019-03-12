@@ -29,6 +29,7 @@ class App extends Component {
 
   setMessage(msg) {
     this.setState({ message: msg });
+    this.closeError();
   }
 
   closeError(e) {
