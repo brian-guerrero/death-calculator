@@ -20,7 +20,6 @@ class App extends Component {
     this.setError = this.setError.bind(this);
     this.closeError = this.closeError.bind(this);
     this.closeMessage = this.closeMessage.bind(this);
-    // this.updateView = this.updateView.bind(this);
     this.formSubmit = this.formSubmit.bind(this);
   }
 
@@ -73,8 +72,6 @@ class App extends Component {
             />
           )}
           <Selector
-            // updateView={this.updateView}
-            // errorHandler={this.setError}
             born={this.state.born}
             died={this.state.died}
             time={this.state.time}

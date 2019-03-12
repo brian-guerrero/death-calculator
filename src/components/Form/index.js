@@ -45,33 +45,27 @@ export default class Form extends Component {
     e.preventDefault();
     let message;
     console.log(this.state.lived);
-    if ((this.state.birth !== "") & (this.state.death !== "")) {
+    if ((this.props.born === true) & (this.props.died === true)) {
       message = calculateTimeLived(this.state.birth, this.state.death);
-    } else if (
-      (this.state.birth !== "") &
-      (this.state.lived.years !== "") &
-      (this.state.lived.months !== "") &
-      (this.state.lived.days !== "")
-    ) {
+    } else if ((this.props.born === true) & (this.props.time === true)) {
       message = calculateDeathDate(this.state.birth, this.state.lived);
-    } else if (
-      (this.state.death !== "") &
-      (this.state.lived.years !== "") &
-      (this.state.lived.months !== "") &
-      (this.state.lived.days !== "")
-    ) {
+    } else if ((this.props.died === true) & (this.props.time === true)) {
       message = calculateBirthDate(this.state.death, this.state.lived);
     }
-    this.setState({
-      birth: "",
-      death: "",
-      lived: {
-        years: "",
-        months: "",
-        days: ""
-      }
-    });
-    this.props.submitHandler(message);
+    if (message) {
+      this.setState({
+        birth: "",
+        death: "",
+        lived: {
+          years: "",
+          months: "",
+          days: ""
+        }
+      });
+      this.props.submitHandler(message);
+    } else {
+      this.props.errorHandler(`Please enter values.`);
+    }
   }
 
   render() {
